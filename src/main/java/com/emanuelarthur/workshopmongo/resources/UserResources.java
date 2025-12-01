@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.emanuelarthur.workshopmongo.domain.User;
@@ -15,7 +16,7 @@ import com.emanuelarthur.workshopmongo.services.UserService;
 @RestController
 @RequestMapping(value = "/users")
 public class UserResources {
-	
+
 	@Autowired
 	private UserService service;
 
@@ -26,4 +27,10 @@ public class UserResources {
 		return ResponseEntity.ok().body(listDto);
 	}
 
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<UserDTO> findById(@PathVariable String id) {
+		User user = service.findById(id);
+		UserDTO dto = new UserDTO(user);
+		return ResponseEntity.ok().body(dto);
+	}
 }
