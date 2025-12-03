@@ -1,8 +1,6 @@
 package com.emanuelarthur.workshopmongo.services;
 
 import java.util.List;
-import java.util.Optional;
-
 import com.emanuelarthur.workshopmongo.services.exception.ObjectNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
